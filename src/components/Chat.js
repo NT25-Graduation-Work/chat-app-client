@@ -71,7 +71,7 @@ function Chat() {
         duration: 4000,
         // Styling
         style: {},
-        className: "",
+        className: "alert alert-error shadow-lg",
         // Custom Icon
         icon: "⚠️",
         // Aria
@@ -83,7 +83,7 @@ function Chat() {
         duration: 4000,
         // Styling
         style: {},
-        className: "",
+        className: "alert alert-error shadow-lg",
         // Custom Icon
         icon: "⚠️",
         // Aria
@@ -110,11 +110,11 @@ function Chat() {
   };
 
   return (
-    <div className="flex w-screen main-chat lg:h-screen bg-gray-900 divide-solid">
+    <div className="flex w-screen main-chat lg:h-screen divide-solid w-full h-full">
       <Toaster />
-      <div className="flex w-full lg:w-5/6 lg:h-5/6 lg:mx-auto lg:my-auto shadow-md">
+      <div className="flex w-full lg:w-5/6 lg:h-5/6 lg:mx-auto lg:my-auto">
         {/* Users online */}
-        <div className="hidden lg:block pl-4 pr-4 w-64 bg-purple-900 text-white">
+        <div className="hidden lg:block pl-4 pr-4 w-64">
           <p className="font-black my-4 text-xl">
             {" "}
             # Online: ({usersOnline !== null ? usersOnline.length : "0"}):
@@ -133,9 +133,9 @@ function Chat() {
               : ""}
           </ul>
         </div>
-        <div className="flex flex-col flex-grow lg:max-w-full bg-purple-50">
+        <div className="flex flex-col flex-grow lg:max-w-full">
           {/* Messages */}
-          <p className="font-black mt-4 mb-2 pl-4 lg:pl-8 text-2xl">
+          <p className="mt-4 mb-2 pl-4 lg:pl-8 text-2xl">
             Main Chat
           </p>
           <div
@@ -160,9 +160,9 @@ function Chat() {
             </ul>
           </div>
           <form className="">
-            <div className="px-8">
+            <div className="">
               <select
-                className="lg:hidden text-xs flex-1 appearance-none border border-gray-300 w-full py-2 px-1 lg:px-4 bg-white text-green-400 placeholder-gray-400 shadow-sm focus:outline-none"
+                className="select select-bordered flex h-100"
                 id="usersOn"
                 onChange={(e) => saveUserToPrivateMsg(e.target.value)}
               >
@@ -178,23 +178,23 @@ function Chat() {
                   : ""}
               </select>
             </div>
-            <div className="w-full flex p-4 lg:p-8 bg-purple-50">
+            <div className="">
               {" "}
-              <div className="flex relative w-full lg:w-5/6">
-                <span className="rounded-l-md inline-flex items-center px-1 lg:px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+              <div className="">
+                <span className="">
                   {toUser === "" ? (
-                    <p className="bg-purple-400 text-white text-xs lg:text-base font-normal rounded p-1">
+                    <p className="badge badge-info gap-2">
                       To: Everyone
                     </p>
                   ) : (
-                    <p className="bg-purple-700 text-white text-xs lg:text-base font-semibold rounded p-1 w-20 lg:w-28 truncate">
+                    <p className="badge badge-info gap-2">
                       To: {toUser}
                     </p>
                   )}
                 </span>
                 <input
                   type="text"
-                  className="rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-1 lg:px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none"
+                  className="input input-bordered"
                   name="message"
                   onChange={(e) => setMsg(e.target.value)}
                   value={msg}
@@ -202,7 +202,7 @@ function Chat() {
               </div>
               <div className="hidden lg:block w-1/6">
                 <button
-                  className="ml-8 flex-shrink-0 bg-green-400 text-gray-700 text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2"
+                  className="btn"
                   onClick={(e) => submitMsg(e)}
                 >
                   Send
