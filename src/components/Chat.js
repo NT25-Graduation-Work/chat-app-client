@@ -3,6 +3,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useParams, useHistory } from "react-router-dom";
 import { default as socket } from "./ws";
 import UserOnline from "./UserOnline";
+import { GrSend } from "react-icons/gr";
 
 function Chat() {
   let { user_nickName } = useParams();
@@ -49,7 +50,7 @@ function Chat() {
     });
 
     socket.on("welcome", (user) => {
-      setChat([...chat, `Welcome to our chat ${user} 😃`]);
+      setChat([...chat, `Welcome to our chat ${user}`]);
     });
 
     socket.on("user-disconnected", (user) => {
@@ -117,15 +118,15 @@ function Chat() {
         <div className="hidden lg:block pl-4 pr-4 w-64">
           <p className="font-black my-4 text-xl">
             {" "}
-            # Online: ({usersOnline !== null ? usersOnline.length : "0"}):
+            Online: ({usersOnline !== null ? usersOnline.length : "0"}):
           </p>
-          <ul className="divide-y divide-gray-300 truncate">
+          <ul className="">
             {usersOnline !== null
               ? usersOnline.map((el, index) => (
                   <button
                     key={index}
                     onClick={() => saveUserToPrivateMsg(el)}
-                    className="block focus:outline-none truncate"
+                    className="menu bg-base-100 w-56 rounded-box"
                   >
                     <UserOnline nickname={el} />
                   </button>
@@ -142,7 +143,7 @@ function Chat() {
             id="msg"
             className="h-5/6 overflow-y-auto pl-4 lg:pl-8 pt-4 mb-2 lg:mb-0"
           >
-            <ul className="w-full lg:w-96">
+            <ul className="">
               {chat.map((el, index) => (
                 <li
                   key={index}
@@ -151,7 +152,7 @@ function Chat() {
                   {el.nickname != null ? (
                     `${el.nickname}: ${el.msg}`
                   ) : (
-                    <p className="text-base font-semibold text-purple-900 rounded py-1">
+                    <p className="text-base font-semibold rounded py-1">
                       {el}
                     </p>
                   )}
@@ -159,10 +160,10 @@ function Chat() {
               ))}
             </ul>
           </div>
-          <form className="">
-            <div className="">
+          <form className="flex justify-center form-control">
+            <div className="input-group">
               <select
-                className="select select-bordered flex h-100"
+                className="select select-bordered"
                 id="usersOn"
                 onChange={(e) => saveUserToPrivateMsg(e.target.value)}
               >
@@ -177,37 +178,19 @@ function Chat() {
                     ))
                   : ""}
               </select>
-            </div>
-            <div className="">
-              {" "}
-              <div className="">
-                <span className="">
-                  {toUser === "" ? (
-                    <p className="badge badge-info gap-2">
-                      To: Everyone
-                    </p>
-                  ) : (
-                    <p className="badge badge-info gap-2">
-                      To: {toUser}
-                    </p>
-                  )}
-                </span>
-                <input
+              <input
                   type="text"
-                  className="input input-bordered"
+                  className="input input-bordered w-full max-w-xs"
                   name="message"
                   onChange={(e) => setMsg(e.target.value)}
                   value={msg}
                 />
-              </div>
-              <div className="hidden lg:block w-1/6">
                 <button
                   className="btn"
                   onClick={(e) => submitMsg(e)}
                 >
-                  Send
+                  <GrSend />
                 </button>
-              </div>
             </div>
           </form>
         </div>

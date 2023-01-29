@@ -5026,6 +5026,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-hot-toast: ^1.0.2
+    react-icons: ^4.7.1
     react-router-dom: ^5.3.4
     react-scripts: ^5.0.1
     socket.io-client: ^3.1.3
@@ -11937,6 +11938,15 @@ __metadata:
     react: ">=16"
     react-dom: ">=16"
   checksum: fca208fc2353df34389a0eaad7863cc210619dd4e904e0e1eddd554bd27b87c18f88761d828c375da55236b64975523fcf4c474b56f6e5807641e85c660eb7af
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^4.7.1":
+  version: 4.7.1
+  resolution: "react-icons@npm:4.7.1"
+  peerDependencies:
+    react: "*"
+  checksum: ed3cbdc5fc0c4d7d2debf78fdc8c4c80aeacf85a506a9a3c11b1d5922de393ac0a6542012b7fb81761e9280c54d0f26827d50a92b54ec8f0c8e52364d89970b5
   languageName: node
   linkType: hard
 
